@@ -77,7 +77,7 @@ pnpm dev
 To connect to a real backend service instead of the default mock server, update the `apps/web-antd/.env.development` file:
 
 ```bash
-VITE_GLOB_API_URL=http://localhost:8000/api
+VITE_GLOB_API_URL=http://localhost:8060/api
 VITE_NITRO_MOCK=false
 ```
 
