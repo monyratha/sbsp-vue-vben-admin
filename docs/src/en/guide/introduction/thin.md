@@ -4,19 +4,7 @@ Starting from version `5.0`, we no longer provide slimmed-down repositories or b
 
 ## Application Slimming
 
-First, identify the version of the `UI` component library you need, and then delete the corresponding applications. For example, if you choose to use `Ant Design Vue`, you can delete the other applications. Simply remove the following two folders:
-
-```bash
-apps/web-ele
-apps/web-native
-
-```
-
-::: tip
-
-If your project doesn’t include the `UI` component library you need, you can delete all other applications and create your own new application as needed.
-
-:::
+The repository currently includes only the `web-antd` application. If you need a different `UI` component library, add your own application and remove any unused examples.
 
 ## Demo Code Slimming
 
@@ -54,14 +42,10 @@ After slimming down, you may need to adjust commands according to your project. 
   "scripts": {
     "build:antd": "pnpm run build --filter=@vben/web-antd",
     "build:docs": "pnpm run build --filter=@vben/docs",
-    "build:ele": "pnpm run build --filter=@vben/web-ele",
-    "build:naive": "pnpm run build --filter=@vben/web-naive",
     "build:play": "pnpm run build --filter=@vben/playground",
     "dev:antd": "pnpm -F @vben/web-antd run dev",
     "dev:docs": "pnpm -F @vben/docs run dev",
-    "dev:ele": "pnpm -F @vben/web-ele run dev",
-    "dev:play": "pnpm -F @vben/playground run dev",
-    "dev:naive": "pnpm -F @vben/web-naive run dev"
+    "dev:play": "pnpm -F @vben/playground run dev"
   }
 }
 ```
