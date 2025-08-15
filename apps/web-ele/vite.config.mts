@@ -1,10 +1,14 @@
+import process from 'node:process';
+
 import { defineConfig } from '@vben/vite-config';
 
 import ElementPlus from 'unplugin-element-plus/vite';
 
+const target = process.env.VITE_GLOB_API_URL || 'http://localhost:8000/api';
+
 export default defineConfig(async () => {
   return {
-    application: {},
+    application: { nitroMock: false },
     vite: {
       plugins: [
         ElementPlus({
@@ -16,8 +20,7 @@ export default defineConfig(async () => {
           '/api': {
             changeOrigin: true,
             rewrite: (path) => path.replace(/^\/api/, ''),
-            // mock代理目标地址
-            target: 'http://localhost:5320/api',
+            target,
             ws: true,
           },
         },

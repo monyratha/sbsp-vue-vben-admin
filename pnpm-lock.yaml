@@ -632,24 +632,6 @@ importers:
         specifier: 'catalog:'
         version: 2.2.10(typescript@5.8.3)
 
-  apps/backend-mock:
-    dependencies:
-      '@faker-js/faker':
-        specifier: 'catalog:'
-        version: 9.9.0
-      jsonwebtoken:
-        specifier: 'catalog:'
-        version: 9.0.2
-      nitropack:
-        specifier: 'catalog:'
-        version: 2.11.13(@netlify/blobs@8.2.0)(encoding@0.1.13)
-    devDependencies:
-      '@types/jsonwebtoken':
-        specifier: 'catalog:'
-        version: 9.0.10
-      h3:
-        specifier: 'catalog:'
-        version: 1.15.3
 
   apps/web-antd:
     dependencies:
