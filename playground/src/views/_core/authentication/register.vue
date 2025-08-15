@@ -3,13 +3,20 @@ import type { VbenFormSchema } from '@vben/common-ui';
 import type { Recordable } from '@vben/types';
 
 import { computed, h, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 import { AuthenticationRegister, z } from '@vben/common-ui';
+import { LOGIN_PATH } from '@vben/constants';
 import { $t } from '@vben/locales';
+
+import { notification } from 'ant-design-vue';
+
+import { registerApi } from '#/api';
 
 defineOptions({ name: 'Register' });
 
 const loading = ref(false);
+const router = useRouter();
 
 const formSchema = computed((): VbenFormSchema[] => {
   return [
@@ -81,9 +88,19 @@ const formSchema = computed((): VbenFormSchema[] => {
   ];
 });
 
-function handleSubmit(value: Recordable<any>) {
-  // eslint-disable-next-line no-console
-  console.log('register submit:', value);
+async function handleSubmit(value: Recordable<any>) {
+  loading.value = true;
+  try {
+    const { username, password } = value;
+    await registerApi({ username, password });
+    notification.success({
+      duration: 3,
+      message: $t('authentication.registerSuccess'),
+    });
+    await router.push(LOGIN_PATH);
+  } finally {
+    loading.value = false;
+  }
 }
 </script>
 

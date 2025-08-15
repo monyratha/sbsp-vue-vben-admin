@@ -7,6 +7,12 @@ export namespace AuthApi {
     username?: string;
   }
 
+  /** 注册接口参数 */
+  export interface RegisterParams {
+    password?: string;
+    username?: string;
+  }
+
   /** 登录接口返回值 */
   export interface LoginResult {
     accessToken: string;
@@ -23,6 +29,13 @@ export namespace AuthApi {
  */
 export async function loginApi(data: AuthApi.LoginParams) {
   return requestClient.post<AuthApi.LoginResult>('/auth/login', data);
+}
+
+/**
+ * 注册
+ */
+export async function registerApi(data: AuthApi.RegisterParams) {
+  return requestClient.post('/auth/register', data);
 }
 
 /**
