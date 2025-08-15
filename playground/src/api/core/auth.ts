@@ -13,6 +13,12 @@ export namespace AuthApi {
     username?: string;
   }
 
+  /** 注册接口返回值 */
+  export interface RegisterResult {
+    messageKey?: string;
+    status: string;
+  }
+
   /** 登录接口返回值 */
   export interface LoginResult {
     accessToken: string;
@@ -37,7 +43,8 @@ export async function loginApi(data: AuthApi.LoginParams) {
  * 注册
  */
 export async function registerApi(data: AuthApi.RegisterParams) {
-  return requestClient.post('/auth/register', data, {
+  return requestClient.post<AuthApi.RegisterResult>('/auth/register', data, {
+    responseReturn: 'body',
     withCredentials: true,
   });
 }

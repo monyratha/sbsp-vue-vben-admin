@@ -92,10 +92,15 @@ async function handleSubmit(value: Recordable<any>) {
   loading.value = true;
   try {
     const { username, password } = value;
-    await registerApi({ username, password });
+    const resp = await registerApi({ username, password });
+    const msgKey = resp?.messageKey;
+    const message =
+      msgKey && $t(msgKey) !== msgKey
+        ? $t(msgKey)
+        : $t('authentication.registerSuccess');
     notification.success({
       duration: 3,
-      message: $t('authentication.registerSuccess'),
+      message,
     });
     await router.push(LOGIN_PATH);
   } finally {
