@@ -2,7 +2,7 @@ import process from 'node:process';
 
 import { defineConfig } from '@vben/vite-config';
 
-const target = process.env.VITE_GLOB_API_URL || 'http://localhost:8060/api';
+const target = process.env.VITE_GLOB_API_URL || 'http://192.168.80.128:8060/';
 
 export default defineConfig(async () => {
   return {
